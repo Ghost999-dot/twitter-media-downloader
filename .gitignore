@@ -1,1 +1,4 @@
-# nothing to ignore yet — the .user.js IS the product
+# the .user.js IS the product
+
+# stray Windows reserved-name file that some tools create on a relative "NUL" redirect
+NUL
