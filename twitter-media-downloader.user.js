@@ -7,9 +7,9 @@
 // @description:ja     Twitter/Xã®ç”»åƒã‚„å‹•ç”»ã‚’ãƒ¯ãƒ³ã‚¯ãƒªãƒƒã‚¯ã§ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€‚ã‚«ã‚¹ã‚¿ãƒ ãƒ•ã‚¡ã‚¤ãƒ«åã‚„å±¥æ­´ã«å¯¾å¿œã€‚
 // @description:zh-CN  ä¸€é”®ä¸‹è½½ Twitter/X å›¾ç‰‡å’Œè§†é¢‘ï¼Œæ”¯æŒè‡ªå®šä¹‰æ–‡ä»¶åå’Œä¸‹è½½åŽ†å²è®°å½•ã€‚
 // @description:zh-TW  ä¸€éµä¸‹è¼‰ Twitter/X åœ–ç‰‡å’Œå½±ç‰‡ï¼Œæ”¯æ´è‡ªè¨‚æª”åèˆ‡ä¸‹è¼‰æ­·å²ç´€éŒ„ã€‚
-// @author      ShanksSU
+// @author      ELO (Ghost999-dot)
 // @namespace    https://github.com/Ghost999-dot/twitter-media-downloader
-// @version     0.3.3.2
+// @version     0.3.4
 // @match       https://twitter.com/*
 // @match       https://x.com/*
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=x.com

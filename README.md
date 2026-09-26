@@ -4,13 +4,15 @@
 
 **One-click downloading of images & videos from Twitter/X — with custom filenames, a download log, and a rewritten download queue.**
 
-![version](https://img.shields.io/badge/version-0.3.3-1d9bf0)
-![license](https://img.shields.io/badge/license-MIT-brightgreen)
+![version](https://img.shields.io/badge/version-0.3.4-1d9bf0)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 ![platform](https://img.shields.io/badge/userscript-Tampermonkey-333)
+
+Maintained by **[ELO (Ghost999-dot)](https://github.com/Ghost999-dot)**
 
 </div>
 
-A patched build of [ShanksSU's Twitter/X Media Downloader](https://github.com/ShanksSU/twitter-media-downloader), hosted here so Tampermonkey keeps it up to date automatically. The download engine has been reworked for speed and reliability, and a small on-screen queue counter was added.
+A patched build of the Twitter/X Media Downloader, maintained by **ELO (Ghost999-dot)** and hosted here so Tampermonkey keeps it up to date automatically. The download engine has been reworked for speed and reliability, and a small on-screen queue counter was added. Forked from [ShanksSU's original](https://github.com/ShanksSU/twitter-media-downloader).
 
 ---
 
@@ -229,6 +231,6 @@ tmdApp.queue.status   // -> { queued: 8, active: 4, max: 4 }
 
 ## Credits & license
 
-- Original script by **[ShanksSU](https://github.com/ShanksSU/twitter-media-downloader)**.
-- Queue rewrite, live queue counter, and hosting tweaks in this fork.
-- Licensed under the **MIT License** (unchanged from upstream).
+- Maintained by **[ELO (Ghost999-dot)](https://github.com/Ghost999-dot)** — queue rewrite, live queue counter, and hosting.
+- Forked from the original by **[ShanksSU](https://github.com/ShanksSU/twitter-media-downloader)**.
+- Licensed under the **[MIT License](LICENSE)** — © 2026 ELO (Ghost999-dot); original portions © ShanksSU.
