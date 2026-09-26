@@ -1,12 +1,12 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         Twitter/X Media Downloader
-// @name:ja      Twitter/X ãƒ¡ãƒ‡ã‚£ã‚¢ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ€ãƒ¼
-// @name:zh-CN   Twitter/X åª’ä½“ä¸‹è½½å™¨
-// @name:zh-TW   Twitter/X åª’é«”ä¸‹è¼‰å™¨
+// @name:ja      Twitter/X メディアダウンローダー
+// @name:zh-CN   Twitter/X 媒体下载器
+// @name:zh-TW   Twitter/X 媒體下載器
 // @description        One-click download of images/videos from Twitter/X, with custom filenames and history.
-// @description:ja     Twitter/Xã®ç”»åƒã‚„å‹•ç”»ã‚’ãƒ¯ãƒ³ã‚¯ãƒªãƒƒã‚¯ã§ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€‚ã‚«ã‚¹ã‚¿ãƒ ãƒ•ã‚¡ã‚¤ãƒ«åã‚„å±¥æ­´ã«å¯¾å¿œã€‚
-// @description:zh-CN  ä¸€é”®ä¸‹è½½ Twitter/X å›¾ç‰‡å’Œè§†é¢‘ï¼Œæ”¯æŒè‡ªå®šä¹‰æ–‡ä»¶åå’Œä¸‹è½½åŽ†å²è®°å½•ã€‚
-// @description:zh-TW  ä¸€éµä¸‹è¼‰ Twitter/X åœ–ç‰‡å’Œå½±ç‰‡ï¼Œæ”¯æ´è‡ªè¨‚æª”åèˆ‡ä¸‹è¼‰æ­·å²ç´€éŒ„ã€‚
+// @description:ja     Twitter/Xの画像や動画をワンクリックでダウンロード。カスタムファイル名や履歴に対応。
+// @description:zh-CN  一键下载 Twitter/X 图片和视频，支持自定义文件名和下载历史记录。
+// @description:zh-TW  一鍵下載 Twitter/X 圖片和影片，支援自訂檔名與下載歷史紀錄。
 // @author      ELO (Ghost999-dot)
 // @namespace    https://github.com/Ghost999-dot/twitter-media-downloader
 // @version     0.3.4
@@ -27,9 +27,9 @@ class Config {
     static defaultFilename = '{user-name}(@{user-id})_{index}';
     static language = {
         en: { download: 'Download', completed: 'Download Completed', settings: 'Settings', history: 'Download Log', empty: 'No history yet.', unknown_date: 'Unknown Date', saved: 'Saved', dialog: { title: 'Download Settings', save: 'Save', save_history: 'Remember download history', auto_bookmark: 'Auto Bookmark on Download', clear_history: 'Clear All History', clear_confirm: 'Clear all download history?', pattern: 'File Name Pattern', preview: 'Preview:', empty_pattern: 'Pattern cannot be empty.', reset: '(Reset)', custom_mode: '(Custom Mode)', tag_mode: '(Tag Mode)', shortcut: 'Keyboard Shortcut:', tags: { '{user-name}': 'User Name', '{user-id}': 'User ID', '{status-id}': 'Tweet ID', '{date-time}': 'Time (UTC)', '{date-time-local}': 'Time (Local)', '{full-text}': 'Full Text', '{fav-count}': 'Likes', '{file-type}': 'Media Type', '{file-name}': 'Original Filename', '{media-count}': 'Media Count', '{index}': 'Index', '{rt-user-name}': 'RT User Name', '{rt-user-id}': 'RT User ID' } }, table: { thumb: 'Thumb', user: 'User', type: 'Type', size: 'Size', postTime: 'Post Time', downTime: 'Download Time', action: 'Action', go: 'Go', del: 'Delete' } },
-        ja: { download: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰', completed: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å®Œäº†', settings: 'è¨­å®š', history: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å±¥æ­´', empty: 'å±¥æ­´ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚', unknown_date: 'æ—¥ä»˜ä¸æ˜Ž', saved: 'ä¿å­˜ã—ã¾ã—ãŸ', dialog: { title: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰è¨­å®š', save: 'ä¿å­˜', save_history: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å±¥æ­´ã‚’ä¿å­˜ã™ã‚‹', auto_bookmark: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ã«è‡ªå‹•ãƒ–ãƒƒã‚¯ãƒžãƒ¼ã‚¯', clear_history: 'å±¥æ­´ã‚’ã‚¯ãƒªã‚¢', clear_confirm: 'ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å±¥æ­´ã‚’å‰Šé™¤ã™ã‚‹ï¼Ÿ', pattern: 'ãƒ•ã‚¡ã‚¤ãƒ«åãƒ‘ã‚¿ãƒ¼ãƒ³', preview: 'ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼:', empty_pattern: 'ãƒ‘ã‚¿ãƒ¼ãƒ³ã¯ç©ºã«ã§ãã¾ã›ã‚“ã€‚', reset: '(ãƒªã‚»ãƒƒãƒˆ)', custom_mode: '(ã‚«ã‚¹ã‚¿ãƒ )', tag_mode: '(ã‚¿ã‚°ãƒ¢ãƒ¼ãƒ‰)', shortcut: 'ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚­ãƒ¼:', tags: { '{user-name}': 'ãƒ¦ãƒ¼ã‚¶ãƒ¼å', '{user-id}': 'ãƒ¦ãƒ¼ã‚¶ãƒ¼ID', '{status-id}': 'ãƒ„ã‚¤ãƒ¼ãƒˆID', '{date-time}': 'æ™‚é–“ (UTC)', '{date-time-local}': 'æ™‚é–“ (ãƒ­ãƒ¼ã‚«ãƒ«)', '{full-text}': 'ãƒ„ã‚¤ãƒ¼ãƒˆæœ¬æ–‡', '{fav-count}': 'ã„ã„ã­æ•°', '{file-type}': 'ãƒ¡ãƒ‡ã‚£ã‚¢ç¨®é¡ž', '{file-name}': 'å…ƒã®ãƒ•ã‚¡ã‚¤ãƒ«å', '{media-count}': 'ãƒ¡ãƒ‡ã‚£ã‚¢æ•°', '{index}': 'ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹', '{rt-user-name}': 'RT ãƒ¦ãƒ¼ã‚¶ãƒ¼å', '{rt-user-id}': 'RT ãƒ¦ãƒ¼ã‚¶ãƒ¼ID' } }, table: { thumb: 'ã‚µãƒ ãƒ', user: 'ãƒ¦ãƒ¼ã‚¶ãƒ¼', type: 'ç¨®é¡ž', size: 'ã‚µã‚¤ã‚º', postTime: 'æŠ•ç¨¿æ™‚é–“', downTime: 'ä¿å­˜æ™‚é–“', action: 'ã‚¢ã‚¯ã‚·ãƒ§ãƒ³', go: 'é–‹ã', del: 'å‰Šé™¤' } },
-        zh: { download: 'ä¸‹è½½', completed: 'ä¸‹è½½å®Œæˆ', settings: 'è®¾ç½®', history: 'ä¸‹è½½è®°å½•', empty: 'æš‚æ— è®°å½•ã€‚', unknown_date: 'æœªçŸ¥æ—¶é—´', saved: 'å·²ä¿å­˜', dialog: { title: 'ä¸‹è½½è®¾ç½®', save: 'ä¿å­˜', save_history: 'ä¿å­˜ä¸‹è½½è®°å½•', auto_bookmark: 'ä¸‹è½½æ—¶è‡ªåŠ¨åŠ å…¥ä¹¦ç­¾', clear_history: '(æ¸…é™¤)', clear_confirm: 'ç¡®è®¤è¦æ¸…é™¤ä¸‹è½½è®°å½•ï¼Ÿ', pattern: 'æ–‡ä»¶åæ ¼å¼', preview: 'é¢„è§ˆ:', empty_pattern: 'æ–‡ä»¶åæ ¼å¼ä¸èƒ½ä¸ºç©ºã€‚', reset: '(é‡ç½®)', custom_mode: '(è‡ªè®¢æ¨¡å¼)', tag_mode: '(æ ‡ç­¾æ¨¡å¼)', shortcut: 'å¿«æ·é”®è®¾å®š:', tags: { '{user-name}': 'ç”¨æˆ·åç§°', '{user-id}': 'ç”¨æˆ·è´¦å·', '{status-id}': 'æŽ¨æ–‡ ID', '{date-time}': 'æ—¶é—´ (UTC)', '{date-time-local}': 'æ—¶é—´ (æœ¬åœ°)', '{full-text}': 'æŽ¨æ–‡å…§æ–‡', '{fav-count}': 'ç‚¹èµžæ•°', '{file-type}': 'åª’ä½“ç±»åž‹', '{file-name}': 'åŽŸå§‹æ–‡ä»¶å', '{media-count}': 'åª’ä½“æ€»æ•°', '{index}': 'åºå·', '{rt-user-name}': 'è½¬å¸–è€…åç§°', '{rt-user-id}': 'è½¬å¸–è€…è´¦å·' } }, table: { thumb: 'ç¼©å›¾', user: 'ç”¨æˆ·', type: 'ç±»åž‹', size: 'å¤§å°', postTime: 'è´´æ–‡æ—¶é—´', downTime: 'ä¸‹è½½æ—¶é—´', action: 'åŠ¨ä½œ', go: 'å‰å¾€', del: 'åˆ é™¤' } },
-        'zh-Hant': { download: 'ä¸‹è¼‰', completed: 'ä¸‹è¼‰å®Œæˆ', settings: 'è¨­ç½®', history: 'ä¸‹è¼‰ç´€éŒ„', empty: 'æš«ç„¡ç´€éŒ„ã€‚', unknown_date: 'æœªçŸ¥æ™‚é–“', saved: 'å·²ä¿å­˜', dialog: { title: 'ä¸‹è¼‰è¨­ç½®', save: 'ä¿å­˜', save_history: 'ä¿å­˜ä¸‹è¼‰è¨˜éŒ„', auto_bookmark: 'ä¸‹è¼‰æ™‚è‡ªå‹•åŠ å…¥æ›¸ç±¤', clear_history: '(æ¸…é™¤)', clear_confirm: 'ç¢ºèªè¦æ¸…é™¤ä¸‹è¼‰è¨˜éŒ„ï¼Ÿ', pattern: 'æ–‡ä»¶åè¦å‰‡', preview: 'é è¦½:', empty_pattern: 'æ–‡ä»¶åè¦å‰‡ä¸èƒ½ç‚ºç©ºã€‚', reset: '(é‡ç½®)', custom_mode: '(è‡ªè¨‚æ¨¡å¼)', tag_mode: '(æ¨™ç±¤æ¨¡å¼)', shortcut: 'å¿«æ·éµè¨­å®š:', tags: { '{user-name}': 'ä½¿ç”¨è€…åç¨±', '{user-id}': 'ä½¿ç”¨è€…å¸³è™Ÿ', '{status-id}': 'æŽ¨æ–‡ ID', '{date-time}': 'æ™‚é–“ (UTC)', '{date-time-local}': 'æ™‚é–“ (æœ¬åœ°)', '{full-text}': 'æŽ¨æ–‡å…§æ–‡', '{fav-count}': 'å–œæ­¡æ•¸é‡', '{file-type}': 'åª’é«”é¡žåž‹', '{file-name}': 'åŽŸå§‹æª”å', '{media-count}': 'åª’é«”ç¸½æ•¸', '{index}': 'æŽ’åºåºè™Ÿ', '{rt-user-name}': 'è½‰æŽ¨è€…åç¨±', '{rt-user-id}': 'è½‰æŽ¨è€…å¸³è™Ÿ' } }, table: { thumb: 'ç¸®åœ–', user: 'ç”¨æˆ¶', type: 'é¡žåž‹', size: 'å¤§å°', postTime: 'è²¼æ–‡æ™‚é–“', downTime: 'ä¸‹è¼‰æ™‚é–“', action: 'å‹•ä½œ', go: 'å‰å¾€', del: 'åˆªé™¤' } }
+        ja: { download: 'ダウンロード', completed: 'ダウンロード完了', settings: '設定', history: 'ダウンロード履歴', empty: '履歴はありません。', unknown_date: '日付不明', saved: '保存しました', dialog: { title: 'ダウンロード設定', save: '保存', save_history: 'ダウンロード履歴を保存する', auto_bookmark: 'ダウンロード時に自動ブックマーク', clear_history: '履歴をクリア', clear_confirm: 'ダウンロード履歴を削除する？', pattern: 'ファイル名パターン', preview: 'プレビュー:', empty_pattern: 'パターンは空にできません。', reset: '(リセット)', custom_mode: '(カスタム)', tag_mode: '(タグモード)', shortcut: 'ショートカットキー:', tags: { '{user-name}': 'ユーザー名', '{user-id}': 'ユーザーID', '{status-id}': 'ツイートID', '{date-time}': '時間 (UTC)', '{date-time-local}': '時間 (ローカル)', '{full-text}': 'ツイート本文', '{fav-count}': 'いいね数', '{file-type}': 'メディア種類', '{file-name}': '元のファイル名', '{media-count}': 'メディア数', '{index}': 'インデックス', '{rt-user-name}': 'RT ユーザー名', '{rt-user-id}': 'RT ユーザーID' } }, table: { thumb: 'サムネ', user: 'ユーザー', type: '種類', size: 'サイズ', postTime: '投稿時間', downTime: '保存時間', action: 'アクション', go: '開く', del: '削除' } },
+        zh: { download: '下载', completed: '下载完成', settings: '设置', history: '下载记录', empty: '暂无记录。', unknown_date: '未知时间', saved: '已保存', dialog: { title: '下载设置', save: '保存', save_history: '保存下载记录', auto_bookmark: '下载时自动加入书签', clear_history: '(清除)', clear_confirm: '确认要清除下载记录？', pattern: '文件名格式', preview: '预览:', empty_pattern: '文件名格式不能为空。', reset: '(重置)', custom_mode: '(自订模式)', tag_mode: '(标签模式)', shortcut: '快捷键设定:', tags: { '{user-name}': '用户名称', '{user-id}': '用户账号', '{status-id}': '推文 ID', '{date-time}': '时间 (UTC)', '{date-time-local}': '时间 (本地)', '{full-text}': '推文內文', '{fav-count}': '点赞数', '{file-type}': '媒体类型', '{file-name}': '原始文件名', '{media-count}': '媒体总数', '{index}': '序号', '{rt-user-name}': '转帖者名称', '{rt-user-id}': '转帖者账号' } }, table: { thumb: '缩图', user: '用户', type: '类型', size: '大小', postTime: '贴文时间', downTime: '下载时间', action: '动作', go: '前往', del: '删除' } },
+        'zh-Hant': { download: '下載', completed: '下載完成', settings: '設置', history: '下載紀錄', empty: '暫無紀錄。', unknown_date: '未知時間', saved: '已保存', dialog: { title: '下載設置', save: '保存', save_history: '保存下載記錄', auto_bookmark: '下載時自動加入書籤', clear_history: '(清除)', clear_confirm: '確認要清除下載記錄？', pattern: '文件名規則', preview: '預覽:', empty_pattern: '文件名規則不能為空。', reset: '(重置)', custom_mode: '(自訂模式)', tag_mode: '(標籤模式)', shortcut: '快捷鍵設定:', tags: { '{user-name}': '使用者名稱', '{user-id}': '使用者帳號', '{status-id}': '推文 ID', '{date-time}': '時間 (UTC)', '{date-time-local}': '時間 (本地)', '{full-text}': '推文內文', '{fav-count}': '喜歡數量', '{file-type}': '媒體類型', '{file-name}': '原始檔名', '{media-count}': '媒體總數', '{index}': '排序序號', '{rt-user-name}': '轉推者名稱', '{rt-user-id}': '轉推者帳號' } }, table: { thumb: '縮圖', user: '用戶', type: '類型', size: '大小', postTime: '貼文時間', downTime: '下載時間', action: '動作', go: '前往', del: '刪除' } }
     };
 
     static logIconUri = `data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'%3E%3C/path%3E%3Cpolyline points='14 2 14 8 20 8'%3E%3C/polyline%3E%3Cline x1='16' y1='13' x2='8' y2='13'%3E%3C/line%3E%3Cline x1='16' y1='17' x2='8' y2='17'%3E%3C/line%3E%3Cpolyline points='10 9 9 9 8 9'%3E%3C/polyline%3E%3C/svg%3E`;
@@ -277,7 +277,7 @@ class Utils {
 
     static getInvalidChars() {
         return {
-            "\n": "ã€€", "\t": "ã€€", "\\": "â§¹", "/": "â§¸", "|": "ï½œ", ":": "êž‰", "*": "ï¼Š", "?": "ï¼Ÿ", '"': 'â€³', "<": "ï¼œ", ">": "ï¼ž", 'â€‹': '', 'â€Œ': '', 'â€': '', 'â ': '', 'ï»¿': '', 'ðŸ”ž': ''
+            "\n": "　", "\t": "　", "\\": "⧹", "/": "⧸", "|": "｜", ":": "꞉", "*": "＊", "?": "？", '"': '″', "<": "＜", ">": "＞", '​': '', '‌': '', '‍': '', '⁠': '', '﻿': '', '🔞': ''
         };
     }
 }
@@ -497,7 +497,7 @@ class UIManager {
         this.queueBadge.style.display = 'flex';
         this.queueBadge.innerHTML =
             `<svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.35"/><path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>` +
-            `<span>${s.active} downloading${s.queued ? ` Â· ${s.queued} queued` : ''}</span>`;
+            `<span>${s.active} downloading${s.queued ? ` · ${s.queued} queued` : ''}</span>`;
     }
 
     setButtonStatus(btn, css, title) {
@@ -588,7 +588,7 @@ class UIManager {
 
         let header = $element(dialog, 'div', 'tmd-modal-header');
         let headerLeft = $element(header, 'div', 'tmd-modal-header-left');
-        let backIcon = (Config.icon_svg && Config.icon_svg.back) ? Config.icon_svg.back : 'â†';
+        let backIcon = (Config.icon_svg && Config.icon_svg.back) ? Config.icon_svg.back : '←';
         let backBtn = $element(headerLeft, 'button', 'tmd-icon-btn', backIcon);
         let titleEl = $element(headerLeft, 'h3', 'tmd-modal-title', '');
         let headerActions = $element(header, 'div', 'tmd-modal-actions');
@@ -597,9 +597,9 @@ class UIManager {
         let langOptions = [
             { val: 'auto', txt: 'Auto' },
             { val: 'en', txt: 'English' },
-            { val: 'ja', txt: 'æ—¥æœ¬èªž' },
-            { val: 'zh', txt: 'ç®€ä½“ä¸­æ–‡' },
-            { val: 'zh-Hant', txt: 'ç¹é«”ä¸­æ–‡' }
+            { val: 'ja', txt: '日本語' },
+            { val: 'zh', txt: '简体中文' },
+            { val: 'zh-Hant', txt: '繁體中文' }
         ];
         langOptions.forEach(l => {
             let opt = $element(langSelect, 'option', '', l.txt);
@@ -628,11 +628,11 @@ class UIManager {
             }
         };
 
-        let setIcon = (Config.icon_svg && Config.icon_svg.settings) ? Config.icon_svg.settings : 'âš™';
+        let setIcon = (Config.icon_svg && Config.icon_svg.settings) ? Config.icon_svg.settings : '⚙';
         let settingsBtn = $element(headerActions, 'button', 'tmd-icon-btn', setIcon);
         settingsBtn.title = this.lang.settings || 'Settings';
 
-        let clearIcon = (Config.icon_svg && Config.icon_svg.clear) ? Config.icon_svg.clear : 'ðŸ—‘';
+        let clearIcon = (Config.icon_svg && Config.icon_svg.clear) ? Config.icon_svg.clear : '🗑';
         let clearBtn = $element(headerActions, 'button', 'tmd-icon-btn danger', clearIcon);
         const dialogLang = this.lang.dialog || {};
         clearBtn.title = dialogLang.clear_history || 'Clear History';
@@ -1108,11 +1108,11 @@ class TwitterMediaDownloaderApp {
             'status-id': status_id,
             'user-id': user.screen_name,
             'fav-count': tweet.legacy.favorite_count || 0,
-            'user-name': user.name.replace(/[\n\t\\/|<>*?:"]|[â€‹-â€â ï»¿]|ðŸ”ž/g, v => invalid[v] !== undefined ? invalid[v] : ''),
+            'user-name': user.name.replace(/[\n\t\\/|<>*?:"]|[​-‍⁠﻿]|🔞/g, v => invalid[v] !== undefined ? invalid[v] : ''),
             'date-time': Utils.formatDate(tweet.legacy.created_at, datetime),
             'date-time-local': Utils.formatDate(tweet.legacy.created_at, datetime, true),
-            'full-text': (tweet.legacy.full_text || '').replace(/\s*https:\/\/t\.co\/\w+/g, '').replaceAll(/\n+/g, '\n').replace(/[\n\t\\/|<>*?:"]|[â€‹-â€â ï»¿]/g, v => invalid[v] !== undefined ? invalid[v] : '').substring(0, textLength),
-            'rt-user-name': retweeter_name.replace(/[\n\t\\/|<>*?:"]|[â€‹-â€â ï»¿]|ðŸ”ž/g, v => invalid[v] !== undefined ? invalid[v] : ''),
+            'full-text': (tweet.legacy.full_text || '').replace(/\s*https:\/\/t\.co\/\w+/g, '').replaceAll(/\n+/g, '\n').replace(/[\n\t\\/|<>*?:"]|[​-‍⁠﻿]/g, v => invalid[v] !== undefined ? invalid[v] : '').substring(0, textLength),
+            'rt-user-name': retweeter_name.replace(/[\n\t\\/|<>*?:"]|[​-‍⁠﻿]|🔞/g, v => invalid[v] !== undefined ? invalid[v] : ''),
             'rt-user-id': retweeter_id ? retweeter_id : 'unknown'
         };
 

@@ -19,20 +19,20 @@ $FILE = 'twitter-media-downloader.user.js'
 $POLL = 3   # seconds between checks
 
 function Bump-Version {
-    $lines = Get-Content $FILE
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '^(//\s*@version\s+)(\d+(?:\.\d+)*)(\s*)$') {
-            $prefix = $matches[1]; $ver = $matches[2]
-            $parts = $ver.Split('.')
-            if ($parts.Count -ge 4) { $parts[3] = [string]([int]$parts[3] + 1) }
-            else { $parts += '1' }
-            $new = ($parts -join '.')
-            $lines[$i] = "$prefix$new"
-            Set-Content -Path $FILE -Value $lines -Encoding UTF8
-            return $new
-        }
-    }
-    return $null
+    # Read/write as UTF-8 via .NET and touch ONLY the @version line, so multibyte characters
+    # (zero-width chars, emoji, full-width spaces) in the script are preserved byte-for-byte.
+    # (Get-Content/Set-Content default to ANSI in Windows PowerShell 5.1 and WOULD corrupt them.)
+    $path = (Resolve-Path $FILE).Path
+    $text = [System.IO.File]::ReadAllText($path, [System.Text.Encoding]::UTF8)
+    $m = [regex]::Match($text, '(?m)^(//\s*@version\s+)(\d+(?:\.\d+)*)([^\S\r\n]*)$')
+    if (-not $m.Success) { return $null }
+    $parts = $m.Groups[2].Value.Split('.')
+    if ($parts.Count -ge 4) { $parts[3] = [string]([int]$parts[3] + 1) }
+    else { $parts += '1' }
+    $new = ($parts -join '.')
+    $out = $text.Substring(0, $m.Index) + $m.Groups[1].Value + $new + $m.Groups[3].Value + $text.Substring($m.Index + $m.Length)
+    [System.IO.File]::WriteAllText($path, $out, (New-Object System.Text.UTF8Encoding($false)))
+    return $new
 }
 
 Write-Host "Watching $FILE  (Ctrl+C to stop)..." -ForegroundColor Cyan
