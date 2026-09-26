@@ -11,7 +11,9 @@
   the build number is what makes Tampermonkey see a newer version on every save.
 #>
 
-$ErrorActionPreference = 'Stop'
+# 'Continue' (not 'Stop'): git writes progress/warnings to stderr, and Windows PowerShell 5.1
+# turns native stderr into terminating errors under 'Stop'. We check $LASTEXITCODE instead.
+$ErrorActionPreference = 'Continue'
 Set-Location -Path $PSScriptRoot
 $FILE = 'twitter-media-downloader.user.js'
 $POLL = 3   # seconds between checks
