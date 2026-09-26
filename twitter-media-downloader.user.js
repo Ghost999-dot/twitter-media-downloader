@@ -8,7 +8,7 @@
 // @description:zh-CN  一键下载 Twitter/X 图片和视频，支持自定义文件名和下载历史记录。
 // @description:zh-TW  一鍵下載 Twitter/X 圖片和影片，支援自訂檔名與下載歷史紀錄。
 // @author      ShanksSU
-// @namespace    https://github.com/ShanksSU/twitter-media-downloader
+// @namespace    https://github.com/Ghost999-dot/twitter-media-downloader
 // @version     0.3.3
 // @match       https://twitter.com/*
 // @match       https://x.com/*
@@ -18,8 +18,8 @@
 // @grant       GM_download
 // @grant       GM_addStyle
 // @license     MIT
-// @downloadURL https://update.greasyfork.org/scripts/571423/TwitterX%20Media%20Downloader.user.js
-// @updateURL https://update.greasyfork.org/scripts/571423/TwitterX%20Media%20Downloader.meta.js
+// @downloadURL https://raw.githubusercontent.com/Ghost999-dot/twitter-media-downloader/main/twitter-media-downloader.user.js
+// @updateURL   https://raw.githubusercontent.com/Ghost999-dot/twitter-media-downloader/main/twitter-media-downloader.user.js
 // ==/UserScript==
 
 class Config {
