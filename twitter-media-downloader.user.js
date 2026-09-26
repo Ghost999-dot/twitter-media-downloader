@@ -9,7 +9,7 @@
 // @description:zh-TW  ä¸€éµä¸‹è¼‰ Twitter/X åœ–ç‰‡å’Œå½±ç‰‡ï¼Œæ”¯æ´è‡ªè¨‚æª”åèˆ‡ä¸‹è¼‰æ­·å²ç´€éŒ„ã€‚
 // @author      ShanksSU
 // @namespace    https://github.com/Ghost999-dot/twitter-media-downloader
-// @version     0.3.3.1
+// @version     0.3.3.2
 // @match       https://twitter.com/*
 // @match       https://x.com/*
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=x.com
@@ -1187,5 +1187,3 @@ class TwitterMediaDownloaderApp {
 
 window.tmdApp = new TwitterMediaDownloaderApp();
 window.tmdApp.init();
-
-// live-pipeline test 18:34:00
