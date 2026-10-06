@@ -1,0 +1,38 @@
+#!/bin/sh
+# ─────────────────────────────────────────────────────────────────────────────
+# Safety-net auto-bump for twitter-media-downloader.user.js.
+#
+# watch-and-push.ps1 already bumps the @version build number on every save while
+# it is running. This hook covers the gap: any commit that touches the published
+# script WITHOUT the watcher running (e.g. a manual commit) still gets a version
+# bump, so Tampermonkey always sees a newer version at the raw GitHub URL.
+#
+# Scheme matches the watcher: the human version (0.3.4) is left alone; a 4th
+# "build" segment is incremented (0.3.4 -> 0.3.4.1 -> 0.3.4.2 ...).
+#
+# If @version was ALREADY changed in this commit (the watcher's Bump-Version ran,
+# or you edited it by hand) the hook does nothing — no double-bump.
+#
+# Only the published script is watched; dev-local.user.js is ignored.
+# ─────────────────────────────────────────────────────────────────────────────
+
+SCRIPT="twitter-media-downloader.user.js"
+
+# Not touching the published script? nothing to do.
+git diff --cached --name-only | grep -qx "$SCRIPT" || exit 0
+
+# Already changed the @version line in this commit? respect it.
+if git diff --cached -U0 -- "$SCRIPT" | grep -q '^+.*@version'; then
+  exit 0
+fi
+
+cur=$(grep -m1 '@version' "$SCRIPT" | sed -E 's/.*@version[[:space:]]+//' | tr -d '\r\n ')
+[ -n "$cur" ] || exit 0
+
+# Mirror watch-and-push.ps1: bump the 4th segment, append .1 if there isn't one.
+new=$(printf '%s' "$cur" | awk -F. 'BEGIN{OFS="."} { if (NF>=4) $4=$4+1; else $(NF+1)=1; print }')
+[ -n "$new" ] || exit 0
+
+sed -i -E "s|(@version[[:space:]]+)[0-9][0-9.]*|\1$new|" "$SCRIPT"
+git add "$SCRIPT"
+echo "[pre-commit] userscript @version bumped $cur -> $new"
